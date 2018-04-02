@@ -8,16 +8,29 @@ import (
 	"github.com/bearchit/namer/pkg/shuffle"
 )
 
-func Name(sentence string) string {
+type namer struct{
+	r *rand.Rand
+}
+
+func New() *namer {
+	return &namer{
+		r: rand.New(rand.NewSource(time.Now().Unix())),
+	}
+}
+
+func (n *namer) Name(sentence string, limit int) string {
 	vowels, consonants := analyze(sentence)
 	vowels = shuffle.String(vowels)
 	consonants = shuffle.String(consonants)
 
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	var result string
 	for _, c := range consonants {
 		result += string(c)
-		result += string(vowels[r.Int()%len(vowels)])
+		result += string(vowels[n.r.Int()%len(vowels)])
+
+		if len(result) >= limit {
+			break
+		}
 	}
 
 	return result

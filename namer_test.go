@@ -7,8 +7,10 @@ import (
 )
 
 func TestName(t *testing.T) {
-	name := Name("Hello, World")
+	n := New()
+	name := n.Name("Hello, World", 6)
 	assert.NotEmpty(t, name)
+	assert.Equal(t, 6, len(name))
 }
 
 func TestAnalyze(t *testing.T) {
@@ -16,4 +18,3 @@ func TestAnalyze(t *testing.T) {
 	assert.Equal(t, "iiaeeee", v)
 	assert.Equal(t, "thsststsntnc", c)
 }
-
