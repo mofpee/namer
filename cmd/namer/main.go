@@ -9,7 +9,7 @@ import (
 
 func main() {
 	text := flag.String("text", "", "A sentence to make a name. (Required)")
-	count := flag.Int("count", 5, "A count of names")
+	count := flag.Int("count", 10, "A count of names")
 
 	flag.Parse()
 
