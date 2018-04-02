@@ -1,7 +1,14 @@
 package shuffle
 
-import "testing"
+import (
+	"testing"
+	"math/rand"
+	"time"
+)
 
 func TestString(t *testing.T) {
-	t.Log(String("Hello"))
+	s := New(
+		rand.New(rand.NewSource(time.Now().Unix())),
+	)
+	t.Log(s.String("Hello"))
 }
