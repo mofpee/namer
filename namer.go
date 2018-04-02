@@ -5,14 +5,17 @@ import (
 	"strings"
 	"math/rand"
 	"time"
+	"github.com/bearchit/namer/pkg/shuffle"
 )
 
 func Name(sentence string) string {
-	vowels,consontants := analyze(sentence)
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	vowels, consonants := analyze(sentence)
+	vowels = shuffle.String(vowels)
+	consonants = shuffle.String(consonants)
 
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	var result string
-	for _, c := range consontants {
+	for _, c := range consonants {
 		result += string(c)
 		result += string(vowels[r.Int()%len(vowels)])
 	}
