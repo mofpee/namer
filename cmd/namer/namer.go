@@ -2,9 +2,10 @@ package main
 
 import (
 	"flag"
-	"os"
 	"fmt"
-	"github.com/bearchit/namer"
+	"os"
+
+	"github.com/bbtoeach/namer"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	}
 
 	n := namer.New(*algorithm)
-	for i:=0; i<*count; i++ {
+	for i := 0; i < *count; i++ {
 		fmt.Println(n.NameMixedShuffle(*text, *limit))
 	}
 }

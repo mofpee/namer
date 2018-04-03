@@ -1,22 +1,23 @@
 package namer
 
 import (
-	"github.com/bearchit/namer/analyzer"
-	"strings"
 	"math/rand"
+	"strings"
 	"time"
-	"github.com/bearchit/namer/pkg/shuffle"
+
+	"github.com/bbtoeach/namer/analyzer"
+	"github.com/bbtoeach/namer/pkg/shuffle"
 )
 
-type namer struct{
-	r *rand.Rand
+type namer struct {
+	r  *rand.Rand
 	fn namerFunc
 }
 
-type namerFunc func(string,int) string
+type namerFunc func(string, int) string
 
 func New(algorithm string) *namer {
-	n:= &namer{
+	n := &namer{
 		r: rand.New(rand.NewSource(time.Now().Unix())),
 	}
 
@@ -34,7 +35,7 @@ func New(algorithm string) *namer {
 }
 
 func (n *namer) Name(sentence string, limit int) string {
-	return n.fn(sentence,limit)
+	return n.fn(sentence, limit)
 }
 
 func (n *namer) NameDefault(sentence string, limit int) string {
@@ -73,4 +74,3 @@ func analyze(sentence string) (vowels string, consonants string) {
 	}
 	return
 }
-
