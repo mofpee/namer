@@ -12,7 +12,7 @@ func main() {
 	text := flag.String("text", "", "A sentence to make a name. (Required)")
 	count := flag.Int("count", 10, "A count of names")
 	limit := flag.Int("limit", 6, "A limit length of name")
-	algorithm := flag.String("alg", "default", "An algorithm to generate names")
+	algorithm := flag.String("alg", "default", "An algorithm to generate names. (default,mixedshuffle)")
 
 	flag.Parse()
 
